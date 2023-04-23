@@ -39,5 +39,5 @@ func _process(_delta):
 	if !player_alive and Input.is_action_just_pressed("game_jump"):
 		get_tree().reload_current_scene()
 	
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	kill_player()
