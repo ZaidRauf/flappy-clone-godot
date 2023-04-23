@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://75mp3il5irnc"]
+
+[ext_resource type="Script" path="res://Pipe.gd" id="1_qrhdo"]
+[ext_resource type="Texture2D" uid="uid://ytblsbnj7x4r" path="res://pipe.png" id="2_py2ln"]
+[ext_resource type="AudioStream" uid="uid://be6o3plfd01ft" path="res://jump_through.wav" id="3_64x6d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bof6"]
+size = Vector2(77, 615)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42nsq"]
+size = Vector2(78, 779)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56l5f"]
+size = Vector2(48, 236)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_qrhdo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(294.5, 467)
+scale = Vector2(4.75, 82.5)
+
+[node name="TopPipeSprite" type="Sprite2D" parent="."]
+position = Vector2(296.217, -7.11419)
+rotation = 3.14159
+scale = Vector2(0.699738, 5.51384)
+texture = ExtResource("2_py2ln")
+
+[node name="BottomPipeSprite" type="Sprite2D" parent="."]
+position = Vector2(295, 836)
+scale = Vector2(0.679688, 7.0625)
+texture = ExtResource("2_py2ln")
+
+[node name="PipeArea2D" type="Area2D" parent="."]
+
+[node name="TopPipeColliderShape" type="CollisionShape2D" parent="PipeArea2D"]
+position = Vector2(295.5, -48.5)
+shape = SubResource("RectangleShape2D_6bof6")
+
+[node name="BottomPipeColliderShape" type="CollisionShape2D" parent="PipeArea2D"]
+position = Vector2(295, 885.5)
+shape = SubResource("RectangleShape2D_42nsq")
+
+[node name="MiddleArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiddleArea2D"]
+position = Vector2(296, 378)
+shape = SubResource("RectangleShape2D_56l5f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_64x6d")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

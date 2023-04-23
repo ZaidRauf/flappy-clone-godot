@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cen8wk42urg4y"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_tptyt"]
+[ext_resource type="Texture2D" uid="uid://haxsn5f74iub" path="res://flappy.png" id="2_l5doq"]
+[ext_resource type="AudioStream" uid="uid://b5wysrxm283wy" path="res://jump.wav" id="3_1ab73"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_drnnt"]
+radius = 17.9993
+height = 61.9976
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_tptyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 1)
+scale = Vector2(1.17188, 1.07434)
+texture = ExtResource("2_l5doq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 5)
+rotation = -1.57952
+shape = SubResource("CapsuleShape2D_drnnt")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1ab73")
